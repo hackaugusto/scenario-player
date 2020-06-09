@@ -1,7 +1,7 @@
 import pytest
 
 from scenario_player import tasks
-from scenario_player.tasks.base import collect_tasks, get_task_class_for_type, Task
+from scenario_player.tasks.base import Task, collect_tasks, get_task_class_for_type
 from scenario_player.tasks.channels import TransferTask
 
 pytest.register_assert_rewrite("tests.unittests.tasks.utils")

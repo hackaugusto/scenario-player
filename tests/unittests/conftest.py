@@ -6,7 +6,6 @@ import pytest
 import requests
 import responses
 from eth_typing import ChecksumAddress
-from eth_utils.address import to_checksum_address
 from raiden_contracts.contract_manager import ContractManager
 from tests.unittests.constants import TEST_TOKEN_ADDRESS, TEST_TOKEN_NETWORK_ADDRESS
 
@@ -29,13 +28,7 @@ def minimal_definition_dict():
 
 class DummyTokenContract:
     def __init__(self, token_address: Address):
-        self.checksum_address = to_checksum_address(token_address)
         self.address = token_address
-
-
-class DummyRPCConfig:
-    def __init__(self):
-        self.client_id = "the_client_id"
 
 
 class DummyPFSConfig:
@@ -117,7 +110,6 @@ def mocked_scenario_runner(dummy_scenario_definition):
         ):
             self.client = MagicMock(spec=JSONRPCClient)
             self.contract_manager = MagicMock(spec=ContractManager)
-            self.scenario_name = scenario_name
             self.definition = dummy_scenario_definition(scenario_name)
             self.session = requests.Session()
             self.task_cache: Dict[str, Task] = {}

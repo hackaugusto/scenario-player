@@ -6,7 +6,6 @@ import uuid
 import structlog
 
 from scenario_player.constants import DEFAULT_TOKEN_BALANCE_FUND, DEFAULT_TOKEN_BALANCE_MIN
-from scenario_player.exceptions.config import TokenConfigurationError
 
 log = structlog.get_logger(__name__)
 
@@ -33,8 +32,6 @@ class TokenConfig:
         When setting the option `reuse` in the definition file, it is an error
         to also give an `address` option - these two options are mutually exclusive!
     """
-
-    CONFIGURATION_ERROR = TokenConfigurationError
 
     def __init__(self, loaded_definition: dict, token_info_fpath: pathlib.Path):
         self.dict = loaded_definition.get("token", {})

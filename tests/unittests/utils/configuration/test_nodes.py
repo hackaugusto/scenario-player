@@ -4,9 +4,7 @@ from scenario_player.utils.configuration.nodes import NodesConfig
 
 
 class TestNodesConfig:
-    @pytest.mark.parametrize(
-        "key", ["default_options", "node_options", "raiden_version", "commands"]
-    )
+    @pytest.mark.parametrize("key", ["default_options", "node_options", "raiden_version"])
     def test_class_returns_expected_default_for_key(
         self, key, expected_defaults, minimal_definition_dict
     ):

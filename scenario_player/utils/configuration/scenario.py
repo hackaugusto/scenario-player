@@ -2,8 +2,6 @@ from typing import Any, Dict, Tuple
 
 import structlog
 
-from scenario_player.exceptions.config import ScenarioConfigurationError
-
 log = structlog.get_logger(__name__)
 
 
@@ -24,8 +22,6 @@ class ScenarioConfig:
             tasks:
               - ...
     """
-
-    CONFIGURATION_ERROR = ScenarioConfigurationError
 
     def __init__(self, config: dict) -> None:
         self.dict = config.get("scenario") or {}

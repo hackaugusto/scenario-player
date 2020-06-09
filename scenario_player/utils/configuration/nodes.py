@@ -1,7 +1,5 @@
 import structlog
 
-from scenario_player.exceptions.config import NodeConfigurationError
-
 log = structlog.get_logger(__name__)
 
 
@@ -25,11 +23,7 @@ class NodesConfig:
           node_options:
             0:
               gas_price: slow
-          commands:
-
     """
-
-    CONFIGURATION_ERROR = NodeConfigurationError
 
     def __init__(self, loaded_definition: dict, environment=None):
         self.dict = loaded_definition.get("nodes") or {}
@@ -58,11 +52,6 @@ class NodesConfig:
     def node_options(self) -> dict:
         """Node-specific overrides for the CLI options of nodes."""
         return self.dict.get("node_options", {})
-
-    @property
-    def commands(self) -> dict:
-        """Return the commands configured for the nodes."""
-        return self.dict.get("commands", {})
 
     def validate(self):
         """Assert that the given configuration is valid.

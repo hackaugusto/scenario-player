@@ -18,7 +18,6 @@ def expected_defaults():
         "token": {"address": None, "block": 0, "reuse": False, "symbol": str(), "decimals": 0},
         "nodes": {
             "count": 1,
-            "commands": {},
             "default_options": {},
             "node_options": {},
             "raiden_version": "LATEST",

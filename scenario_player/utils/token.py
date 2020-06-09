@@ -14,8 +14,6 @@ from raiden.network.rpc.client import EthTransfer, JSONRPCClient
 from raiden.utils.typing import Address, Set, TokenAmount
 from scenario_player.exceptions.config import TokenFileError, TokenFileMissing
 
-CUSTOM_TOKEN_NAME = "CustomToken"
-
 log = structlog.get_logger(__name__)
 
 

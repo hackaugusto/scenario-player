@@ -16,11 +16,6 @@ from raiden.utils.typing import (
     TokenAmount,
 )
 from scenario_player.constants import GAS_STRATEGIES, TIMEOUT
-from scenario_player.exceptions.config import (
-    ScenarioConfigurationError,
-    ServiceConfigurationError,
-    UDCTokenConfigError,
-)
 
 log = structlog.get_logger(__name__)
 
@@ -85,8 +80,6 @@ class UDCTokenSettings:
             ...
     """
 
-    CONFIGURATION_ERROR = UDCTokenConfigError
-
     def __init__(self, loaded_definition: dict, environment: EnvironmentConfig):
         settings = loaded_definition.get("settings", {})
         services = settings.get("services", {})
@@ -96,10 +89,7 @@ class UDCTokenSettings:
         self.validate()
 
     def validate(self) -> None:
-        """Validate the UDC Token options given.
-
-        :raises UDCTokenConfigError: if :attr:`.max_funding` < :attr:`.balance_per_node`.
-        """
+        """Validate the UDC Token options given. """
         assert (
             self.max_funding >= self.balance_per_node
         ), "udc.token.max_funding must be >= udc.token.balance_per_node!"
@@ -179,8 +169,6 @@ class ServiceSettingsConfig:
     to raiden service settings.
     """
 
-    CONFIGURATION_ERROR = ServiceConfigurationError
-
     def __init__(self, loaded_definition: dict, environment: EnvironmentConfig):
         settings = loaded_definition.get("settings", {})
         services = settings.get("services", {})
@@ -211,8 +199,6 @@ class SettingsConfig:
         ...
 
     """
-
-    CONFIGURATION_ERROR = ScenarioConfigurationError
 
     def __init__(self, loaded_definition: dict, environment: EnvironmentConfig) -> None:
         settings = loaded_definition.get("settings", {})

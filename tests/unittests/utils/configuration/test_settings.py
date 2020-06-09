@@ -57,7 +57,7 @@ class TestSettingsConfig:
             SettingsConfig(minimal_definition_dict, dummy_env)
         except Exception:
             if not raises:
-                pytest.fail("Raised ScenarioConfigurationError unexpectedly!")
+                pytest.fail("Raised unexpectedly!")
 
     def test_gas_price_strategy_returns_a_callable(self, minimal_definition_dict):
         """The :attr:`SettingsConfig.gas_price_strategy` returns a callable."""
